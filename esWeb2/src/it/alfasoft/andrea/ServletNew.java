@@ -20,30 +20,37 @@ public class ServletNew extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	response.setContentType("text/html");	
-				
-//		
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-	
-		
-		if(password.equals("123")){			
-			RequestDispatcher rd=request.getRequestDispatcher("Servlet2");
-			rd.forward(request, response);
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
-			} else{
-				
-				PrintWriter wr=response.getWriter();
-				wr.println("user o password errati");
-				RequestDispatcher rd2=request.getRequestDispatcher("login.html");
-				rd2.include(request, response);
-//				response.sendRedirect("login.html");
-			}
-	
+		response.setContentType("text/html");
+
+		//
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+
+		if (password.equals("123")) {
+//			response.sendRedirect("index.html");
+			
+			PrintWriter wr = response.getWriter();
+			wr.println("ciao Andrea");
+			RequestDispatcher rd = request.getRequestDispatcher("Servlet2");
+			rd.include(request, response);
+			
+//			rd.forward(request, response);
+
+		} else {
+
+			PrintWriter wr = response.getWriter();
+			wr.println("user o password errati");
+			RequestDispatcher rd2 = request.getRequestDispatcher("login.html");
+			rd2.include(request, response);
+			// response.sendRedirect("login.html");
+		}
+
 	}
 	
 //	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

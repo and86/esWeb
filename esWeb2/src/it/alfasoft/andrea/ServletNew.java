@@ -3,6 +3,7 @@ package it.alfasoft.andrea;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,15 +25,16 @@ public class ServletNew extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	response.setContentType("text/html");	
-	
-	String nome=request.getParameter("username");
-		
+				
 //		
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 	
-		if(password.equals("123")){		
-			response.sendRedirect("index.html");
+		if(password.equals("123")){	
+			RequestDispatcher rd=request.getRequestDispatcher("Servlet2");
+			rd.forward(request, response);
+
+//			response.sendRedirect("index.html");
 
 			} else{
 			
@@ -41,20 +43,20 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		
-		PrintWriter wr=response.getWriter();
-		if(password.equals("123")){		
-		wr.println("benvenuto "+username);
-		} else{
-		
-		response.sendRedirect("login.html");
-		}
-	
-	}
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		
+//		String username=request.getParameter("username");
+//		String password=request.getParameter("password");
+//		
+//		PrintWriter wr=response.getWriter();
+//		if(password.equals("123")){		
+//		wr.println("benvenuto "+username);
+//		} else{
+//		
+//		response.sendRedirect("login.html");
+//		}
+//	
+//	}
 	
 
 

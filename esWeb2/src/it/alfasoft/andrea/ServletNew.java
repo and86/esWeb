@@ -30,10 +30,10 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 //		
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		PrintWriter wr=response.getWriter();
+	
 		if(password.equals("123")){		
 			response.sendRedirect("index.html");
-//			wr.println("benvenuto "+username);
+
 			} else{
 			
 			response.sendRedirect("login.html");

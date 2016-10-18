@@ -30,15 +30,18 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 	
-		if(password.equals("123")){	
+		
+		if(password.equals("123")){			
 			RequestDispatcher rd=request.getRequestDispatcher("Servlet2");
 			rd.forward(request, response);
 
-//			response.sendRedirect("index.html");
-
 			} else{
-			
-			response.sendRedirect("login.html");
+				
+				PrintWriter wr=response.getWriter();
+				wr.println("user o password errati");
+				RequestDispatcher rd2=request.getRequestDispatcher("login.html");
+				rd2.include(request, response);
+//				response.sendRedirect("login.html");
 			}
 	
 	}
